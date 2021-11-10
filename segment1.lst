@@ -1,0 +1,54 @@
+     Assembly listing for: segment1.mas
+                Assembled: Tue Nov 09 15:53:44 EST 2021
+
+         |                              / Segment 1
+000 101B |  While    LOAD NameAddr      / CurAddr = &(Name[index])
+001 301C |           ADD Index           
+002 201D |           STORE CurAddr       
+003 A000 |           CLEAR              / acc = Name[index]
+004 B01D |           ADDI CurAddr        
+005 8800 |           SKIPCOND 800       / if Name[index] > null
+006 900C |           JUMP Done          / else we're done
+007 6000 |  Print    OUTPUT              
+008 101C |           LOAD Index         / index++
+009 301E |           ADD Incr            
+00A 201C |           STORE Index         
+00B 9000 |           JUMP While         / repeat loop for next char
+00C 7000 |  Done     HALT                
+00D 004D |  Name     DEC 77             / 'M'
+00E 0069 |           DEC 105            / 'i'
+00F 0063 |           DEC 99             / 'c'
+010 0068 |           DEC 104            / 'h'
+011 0061 |           DEC 97             / 'a'
+012 0065 |           DEC 101            / 'e'
+013 006C |           DEC 108            / 'l'
+014 000D |           DEC 13             / new line
+015 0041 |           DEC 65             / 'A'
+016 0064 |           DEC 100            / 'd'
+017 0061 |           DEC 97             / 'a'
+018 006D |           DEC 109            / 'm'
+019 0073 |           DEC 115            / 's'	
+01A 0000 |  Null     DEC 0              / '\0'
+01B 000D |  NameAddr HEX D              / addr of Name
+01C 0000 |  Index    DEC 0              / current index into name[]
+01D 0000 |  CurAddr  HEX 0              / addr of Name[index]
+01E 0001 |  Incr     DEC 1              / for ++
+
+Assembly successful.
+
+         SYMBOL TABLE
+         ----------------------------------------------------
+          Symbol   | Defined | References 
+         ----------+---------+-------------------------------
+          CurAddr  |   01D   | 002, 004
+          Done     |   00C   | 006
+          Incr     |   01E   | 009
+          Index    |   01C   | 001, 008, 00A
+          Name     |   00D   | 
+          NameAddr |   01B   | 000
+          Null     |   01A   | 
+          Print    |   007   | 
+          While    |   000   | 00B
+         ----------------------------------------------------
+
+

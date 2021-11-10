@@ -1,0 +1,13 @@
+ -------------------
+ Symbol   | Location
+ ---------+---------
+ CurAddr  |   01D
+ Done     |   00C
+ Incr     |   01E
+ Index    |   01C
+ Name     |   00D
+ NameAddr |   01B
+ Null     |   01A
+ Print    |   007
+ While    |   000
+

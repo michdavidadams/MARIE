@@ -1,0 +1,32 @@
+/ Segment 1
+While,		LOAD		NameAddr   	/ CurAddr = &(Name[index])
+		ADD		Index
+		STORE		CurAddr
+		CLEAR                 		/ acc = Name[index]
+		ADDI		CurAddr
+		SKIPCOND	800       	/ if Name[index] > null
+		JUMP		Done      	/ else we're done
+Print,		OUTPUT
+		LOAD		Index		/ index++
+		ADD		Incr
+		STORE		Index
+		JUMP        	While		/ repeat loop for next char
+Done,		HALT
+Name,		DEC		77		/ 'M'
+		DEC		105		/ 'i'
+		DEC		99		/ 'c'
+		DEC		104		/ 'h'
+		DEC		97		/ 'a'
+		DEC		101		/ 'e'
+		DEC		108		/ 'l'
+		DEC		13		/ new line
+		DEC		65		/ 'A'
+		DEC		100		/ 'd'
+		DEC		97		/ 'a'
+		DEC		109		/ 'm'
+		DEC		115		/ 's'	
+Null,		DEC		0         	/ '\0'
+NameAddr,	HEX		D		/ addr of Name
+Index,		DEC		0		/ current index into name[]
+CurAddr,	HEX		0		/ addr of Name[index]
+Incr,		DEC		1		/ for ++
