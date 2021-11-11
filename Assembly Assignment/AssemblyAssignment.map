@@ -1,0 +1,26 @@
+ --------------------
+ Symbol    | Location
+ ----------+---------
+ CurAddr   |   01E
+ Done1     |   00C
+ Done2     |   03D
+ ElseIf2   |   02F
+ EndWhile3 |   04F
+ If2       |   027
+ IfDif2    |   038
+ Incr      |   01F
+ Index     |   01D
+ Name      |   00E
+ NameAddr  |   01C
+ Null      |   01B
+ One       |   043
+ Print1    |   007
+ Seg2      |   020
+ Sum       |   052
+ Ten       |   053
+ While1    |   000
+ While3    |   044
+ x         |   040
+ y         |   041
+ z         |   042
+

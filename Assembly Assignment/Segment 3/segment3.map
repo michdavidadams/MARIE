@@ -1,0 +1,10 @@
+ -------------------
+ Symbol   | Location
+ ---------+---------
+ EndWhile |   00B
+ One      |   010
+ Sum      |   00E
+ Ten      |   011
+ While    |   000
+ X        |   00F
+

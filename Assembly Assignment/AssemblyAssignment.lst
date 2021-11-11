@@ -1,0 +1,124 @@
+     Assembly listing for: AssemblyAssignment.mas
+                Assembled: Wed Nov 10 21:42:58 EST 2021
+
+         |                                / Segment 1
+000 101C |  While1    LOAD NameAddr       / CurAddr = &(Name[index])
+001 301D |            ADD Index            
+002 201E |            STORE CurAddr        
+003 A000 |            CLEAR               / acc = Name[index]
+004 B01E |            ADDI CurAddr         
+005 8800 |            SKIPCOND 800        / if Name[index] > null
+006 900C |            JUMP Done1          / else we're done
+007 6000 |  Print1    OUTPUT               
+008 101D |            LOAD Index          / index++
+009 301F |            ADD Incr             
+00A 201D |            STORE Index          
+00B 9000 |            JUMP While1         / repeat loop for next char
+00C A000 |  Done1     CLEAR                
+00D 9020 |            JUMP Seg2            
+00E 004D |  Name      DEC 77              / 'M'
+00F 0069 |            DEC 105             / 'i'
+010 0063 |            DEC 99              / 'c'
+011 0068 |            DEC 104             / 'h'
+012 0061 |            DEC 97              / 'a'
+013 0065 |            DEC 101             / 'e'
+014 006C |            DEC 108             / 'l'
+015 000D |            DEC 13              / new line
+016 0041 |            DEC 65              / 'A'
+017 0064 |            DEC 100             / 'd'
+018 0061 |            DEC 97              / 'a'
+019 006D |            DEC 109             / 'm'
+01A 0073 |            DEC 115             / 's'	
+01B 0000 |  Null      DEC 0               / '\0'
+01C 000E |  NameAddr  HEX E               / addr of Name
+01D 0000 |  Index     DEC 0               / current index into name[]
+01E 0000 |  CurAddr   HEX 0               / addr of Name[index]
+01F 0001 |  Incr      DEC 1               / for ++
+         |                                
+         |                                / Segment 2
+020 A000 |  Seg2      CLEAR                
+021 5000 |            INPUT               / get value for x
+022 2040 |            STORE x             / store value for x
+023 5000 |            INPUT               / get value for y
+024 2041 |            STORE y             / store value for y
+025 5000 |            INPUT               / get value for z
+026 2042 |            STORE z             / store value for z
+027 4041 |  If2       SUBT y              / acc = y - x
+028 8800 |            SKIPCOND 800        / if > 0 then x <= y
+029 902F |            JUMP ElseIf2         
+02A A000 |            CLEAR                
+02B 1041 |            LOAD y               
+02C 3043 |            ADD One             / y + 1
+02D 6000 |            OUTPUT               
+02E 903D |            JUMP Done2           
+02F A000 |  ElseIf2   CLEAR                
+030 1040 |            LOAD x               
+031 4042 |            SUBT z               
+032 8400 |            SKIPCOND 400        / skip if x = z
+033 9038 |            JUMP IfDif2          
+034 1042 |            LOAD z               
+035 3043 |            ADD One             / z + 1
+036 6000 |            OUTPUT               
+037 903D |            JUMP Done2           
+038 A000 |  IfDif2    CLEAR               // if x != z
+039 1041 |            LOAD y               
+03A 4043 |            SUBT One            / y - 1
+03B 6000 |            OUTPUT               
+03C 903D |            JUMP Done2           
+03D A000 |  Done2     CLEAR                
+03E 2040 |            STORE x              
+03F 9044 |            JUMP While3          
+040 0000 |  x         DEC 0                
+041 0000 |  y         DEC 0                
+042 0000 |  z         DEC 0                
+043 0001 |  One       DEC 1                
+         |                                
+         |                                / Segment 3
+044 1040 |  While3    LOAD x               
+045 4053 |            SUBT Ten             
+046 8000 |            SKIPCOND 000         
+047 904F |            JUMP EndWhile3       
+048 3053 |            ADD Ten              
+049 3043 |            ADD One              
+04A 2040 |            STORE x              
+04B 1052 |            LOAD Sum             
+04C 3043 |            ADD One              
+04D 2052 |            STORE Sum            
+04E 9044 |            JUMP While3          
+04F 1052 |  EndWhile3 LOAD Sum             
+050 6000 |            OUTPUT               
+051 7000 |            HALT                 
+052 0000 |  Sum       DEC 0                
+053 000A |  Ten       DEC 10               
+
+Assembly successful.
+
+         SYMBOL TABLE
+         -----------------------------------------------------
+          Symbol    | Defined | References 
+         -----------+---------+-------------------------------
+          CurAddr   |   01E   | 002, 004
+          Done1     |   00C   | 006
+          Done2     |   03D   | 02E, 037, 03C
+          ElseIf2   |   02F   | 029
+          EndWhile3 |   04F   | 047
+          If2       |   027   | 
+          IfDif2    |   038   | 033
+          Incr      |   01F   | 009
+          Index     |   01D   | 001, 008, 00A
+          Name      |   00E   | 
+          NameAddr  |   01C   | 000
+          Null      |   01B   | 
+          One       |   043   | 02C, 035, 03A, 049, 04C
+          Print1    |   007   | 
+          Seg2      |   020   | 00D
+          Sum       |   052   | 04B, 04D, 04F
+          Ten       |   053   | 045, 048
+          While1    |   000   | 00B
+          While3    |   044   | 03F, 04E
+          x         |   040   | 022, 030, 03E, 044, 04A
+          y         |   041   | 024, 027, 02B, 039
+          z         |   042   | 026, 031, 034
+         -----------------------------------------------------
+
+

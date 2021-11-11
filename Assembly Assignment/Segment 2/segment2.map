@@ -1,0 +1,13 @@
+ -----------------
+ Symbol | Location
+ -------+---------
+ Done   |   01D
+ ElseIf |   00F
+ If     |   007
+ IfDif  |   018
+ One    |   021
+ Seg2   |   000
+ x      |   01E
+ y      |   01F
+ z      |   020
+

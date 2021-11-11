@@ -1,0 +1,35 @@
+/ Segment 2
+Seg2,		CLEAR
+		INPUT				/ get value for x
+		STORE		x		/ store value for x
+		INPUT				/ get value for y
+		STORE		y		/ store value for y
+		INPUT				/ get value for z
+		STORE		z		/ store value for z
+If,		SUBT		y		/ acc = y - x
+		SKIPCOND	800		/ if > 0 then x <= y
+		JUMP		ElseIf
+		CLEAR
+		LOAD		y
+		ADD		One		/ y + 1
+		OUTPUT
+		JUMP		Done
+ElseIf,		CLEAR
+		LOAD		x
+		SUBT		z
+		SKIPCOND	400		/ skip if x = z
+		JUMP		IfDif
+		LOAD		z
+		ADD		One		/ z + 1
+		OUTPUT
+		JUMP		Done
+IfDif,		CLEAR				// if x != z
+		LOAD		y
+		SUBT		One		/ y - 1
+		OUTPUT
+		JUMP		Done
+Done,		HALT
+x,		DEC		0
+y,		DEC		0
+z,		DEC		0
+One,		DEC		1

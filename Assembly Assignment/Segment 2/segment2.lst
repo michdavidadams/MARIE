@@ -1,0 +1,57 @@
+     Assembly listing for: segment2.mas
+                Assembled: Tue Nov 09 15:57:48 EST 2021
+
+         |                          / Segment 2
+000 A000 |  Seg2   CLEAR             
+001 5000 |         INPUT            / get value for x
+002 201E |         STORE x          / store value for x
+003 5000 |         INPUT            / get value for y
+004 201F |         STORE y          / store value for y
+005 5000 |         INPUT            / get value for z
+006 2020 |         STORE z          / store value for z
+007 401F |  If     SUBT y           / acc = y - x
+008 8800 |         SKIPCOND 800     / if > 0 then x <= y
+009 900F |         JUMP ElseIf       
+00A A000 |         CLEAR             
+00B 101F |         LOAD y            
+00C 3021 |         ADD One          / y + 1
+00D 6000 |         OUTPUT            
+00E 901D |         JUMP Done         
+00F A000 |  ElseIf CLEAR             
+010 101E |         LOAD x            
+011 4020 |         SUBT z            
+012 8400 |         SKIPCOND 400     / skip if x = z
+013 9018 |         JUMP IfDif        
+014 1020 |         LOAD z            
+015 3021 |         ADD One          / z + 1
+016 6000 |         OUTPUT            
+017 901D |         JUMP Done         
+018 A000 |  IfDif  CLEAR            // if x != z
+019 101F |         LOAD y            
+01A 4021 |         SUBT One         / y - 1
+01B 6000 |         OUTPUT            
+01C 901D |         JUMP Done         
+01D 7000 |  Done   HALT              
+01E 0000 |  x      DEC 0             
+01F 0000 |  y      DEC 0             
+020 0000 |  z      DEC 0             
+021 0001 |  One    DEC 1             
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          Done   |   01D   | 00E, 017, 01C
+          ElseIf |   00F   | 009
+          If     |   007   | 
+          IfDif  |   018   | 013
+          One    |   021   | 00C, 015, 01A
+          Seg2   |   000   | 
+          x      |   01E   | 002, 010
+          y      |   01F   | 004, 007, 00B, 019
+          z      |   020   | 006, 011, 014
+         --------------------------------------------------
+
+

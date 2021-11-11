@@ -1,0 +1,38 @@
+     Assembly listing for: segment3.mas
+                Assembled: Wed Nov 10 20:11:49 EST 2021
+
+         |                              / Segment 3
+000 100F |  While    LOAD X              
+001 4011 |           SUBT Ten            
+002 8000 |           SKIPCOND 000        
+003 900B |           JUMP EndWhile       
+004 3011 |           ADD Ten             
+005 3010 |           ADD One             
+006 200F |           STORE X             
+007 100E |           LOAD Sum            
+008 3010 |           ADD One             
+009 200E |           STORE Sum           
+00A 9000 |           JUMP While          
+00B 100E |  EndWhile LOAD Sum            
+00C 6000 |           OUTPUT              
+00D 7000 |           HALT                
+00E 0000 |  Sum      DEC 0               
+00F 0000 |  X        DEC 0               
+010 0001 |  One      DEC 1               
+011 000A |  Ten      DEC 10              
+
+Assembly successful.
+
+         SYMBOL TABLE
+         ----------------------------------------------------
+          Symbol   | Defined | References 
+         ----------+---------+-------------------------------
+          EndWhile |   00B   | 003
+          One      |   010   | 005, 008
+          Sum      |   00E   | 007, 009, 00B
+          Ten      |   011   | 001, 004
+          While    |   000   | 00A
+          X        |   00F   | 000, 006
+         ----------------------------------------------------
+
+
