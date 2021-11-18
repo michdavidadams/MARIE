@@ -5,7 +5,7 @@
  Done1     |   00C
  Done2     |   03D
  ElseIf2   |   02F
- EndWhile3 |   04F
+ EndWhile3 |   05A
  If2       |   027
  IfDif2    |   038
  Incr      |   01F
@@ -13,14 +13,15 @@
  Name      |   00E
  NameAddr  |   01C
  Null      |   01B
- One       |   043
+ One       |   04D
  Print1    |   007
  Seg2      |   020
- Sum       |   052
- Ten       |   053
+ Sum       |   05D
+ Ten       |   05E
  While1    |   000
- While3    |   044
- x         |   040
- y         |   041
- z         |   042
+ While3    |   04F
+ Zero      |   04E
+ x         |   04A
+ y         |   04B
+ z         |   04C
 

@@ -1,5 +1,5 @@
      Assembly listing for: AssemblyAssignment.mas
-                Assembled: Wed Nov 10 21:42:58 EST 2021
+                Assembled: Thu Nov 18 15:35:35 EST 2021
 
          |                                / Segment 1
 000 101C |  While1    LOAD NameAddr       / CurAddr = &(Name[index])
@@ -38,58 +38,69 @@
          |                                / Segment 2
 020 A000 |  Seg2      CLEAR                
 021 5000 |            INPUT               / get value for x
-022 2040 |            STORE x             / store value for x
+022 204A |            STORE x             / store value for x
 023 5000 |            INPUT               / get value for y
-024 2041 |            STORE y             / store value for y
+024 204B |            STORE y             / store value for y
 025 5000 |            INPUT               / get value for z
-026 2042 |            STORE z             / store value for z
-027 4041 |  If2       SUBT y              / acc = y - x
+026 204C |            STORE z             / store value for z
+027 404B |  If2       SUBT y              / acc = y - x
 028 8800 |            SKIPCOND 800        / if > 0 then x <= y
 029 902F |            JUMP ElseIf2         
 02A A000 |            CLEAR                
-02B 1041 |            LOAD y               
-02C 3043 |            ADD One             / y + 1
-02D 6000 |            OUTPUT               
-02E 903D |            JUMP Done2           
+02B 104B |            LOAD y               
+02C 304D |            ADD One             / y + 1
+02D 204B |            STORE y              
+02E 902F |            JUMP ElseIf2         
 02F A000 |  ElseIf2   CLEAR                
-030 1040 |            LOAD x               
-031 4042 |            SUBT z               
+030 104A |            LOAD x               
+031 404C |            SUBT z               
 032 8400 |            SKIPCOND 400        / skip if x = z
 033 9038 |            JUMP IfDif2          
-034 1042 |            LOAD z               
-035 3043 |            ADD One             / z + 1
-036 6000 |            OUTPUT               
-037 903D |            JUMP Done2           
+034 104C |            LOAD z               
+035 304D |            ADD One             / z + 1
+036 204C |            STORE z              
+037 9038 |            JUMP IfDif2          
 038 A000 |  IfDif2    CLEAR               // if x != z
-039 1041 |            LOAD y               
-03A 4043 |            SUBT One            / y - 1
-03B 6000 |            OUTPUT               
+039 104B |            LOAD y               
+03A 404D |            SUBT One            / y - 1
+03B 204B |            STORE y              
 03C 903D |            JUMP Done2           
 03D A000 |  Done2     CLEAR                
-03E 2040 |            STORE x              
-03F 9044 |            JUMP While3          
-040 0000 |  x         DEC 0                
-041 0000 |  y         DEC 0                
-042 0000 |  z         DEC 0                
-043 0001 |  One       DEC 1                
+03E 104A |            LOAD x               
+03F 6000 |            OUTPUT               
+040 A000 |            CLEAR                
+041 104B |            LOAD y               
+042 6000 |            OUTPUT               
+043 A000 |            CLEAR                
+044 104C |            LOAD z               
+045 6000 |            OUTPUT               
+046 A000 |            CLEAR                
+047 104E |            LOAD Zero           / Sets x to 0 for next segment
+048 204A |            STORE x              
+049 904F |            JUMP While3          
+04A 0000 |  x         DEC 0                
+04B 0000 |  y         DEC 0                
+04C 0000 |  z         DEC 0                
+04D 0001 |  One       DEC 1                
+04E 0000 |  Zero      DEC 0                
          |                                
          |                                / Segment 3
-044 1040 |  While3    LOAD x               
-045 4053 |            SUBT Ten             
-046 8000 |            SKIPCOND 000         
-047 904F |            JUMP EndWhile3       
-048 3053 |            ADD Ten              
-049 3043 |            ADD One              
-04A 2040 |            STORE x              
-04B 1052 |            LOAD Sum             
-04C 3043 |            ADD One              
-04D 2052 |            STORE Sum            
-04E 9044 |            JUMP While3          
-04F 1052 |  EndWhile3 LOAD Sum             
-050 6000 |            OUTPUT               
-051 7000 |            HALT                 
-052 0000 |  Sum       DEC 0                
-053 000A |  Ten       DEC 10               
+04F 104A |  While3    LOAD x               
+050 405E |            SUBT Ten             
+051 8000 |            SKIPCOND 000         
+052 905A |            JUMP EndWhile3       
+053 305E |            ADD Ten              
+054 304D |            ADD One              
+055 204A |            STORE x              
+056 105D |            LOAD Sum             
+057 304D |            ADD One              
+058 205D |            STORE Sum            
+059 904F |            JUMP While3          
+05A 105D |  EndWhile3 LOAD Sum             
+05B 6000 |            OUTPUT               
+05C 7000 |            HALT                 
+05D 0000 |  Sum       DEC 0                
+05E 000A |  Ten       DEC 10               
 
 Assembly successful.
 
@@ -99,26 +110,28 @@ Assembly successful.
          -----------+---------+-------------------------------
           CurAddr   |   01E   | 002, 004
           Done1     |   00C   | 006
-          Done2     |   03D   | 02E, 037, 03C
-          ElseIf2   |   02F   | 029
-          EndWhile3 |   04F   | 047
+          Done2     |   03D   | 03C
+          ElseIf2   |   02F   | 029, 02E
+          EndWhile3 |   05A   | 052
           If2       |   027   | 
-          IfDif2    |   038   | 033
+          IfDif2    |   038   | 033, 037
           Incr      |   01F   | 009
           Index     |   01D   | 001, 008, 00A
           Name      |   00E   | 
           NameAddr  |   01C   | 000
           Null      |   01B   | 
-          One       |   043   | 02C, 035, 03A, 049, 04C
+          One       |   04D   | 02C, 035, 03A, 054, 057
           Print1    |   007   | 
           Seg2      |   020   | 00D
-          Sum       |   052   | 04B, 04D, 04F
-          Ten       |   053   | 045, 048
+          Sum       |   05D   | 056, 058, 05A
+          Ten       |   05E   | 050, 053
           While1    |   000   | 00B
-          While3    |   044   | 03F, 04E
-          x         |   040   | 022, 030, 03E, 044, 04A
-          y         |   041   | 024, 027, 02B, 039
-          z         |   042   | 026, 031, 034
+          While3    |   04F   | 049, 059
+          Zero      |   04E   | 047
+          x         |   04A   | 022, 030, 03E, 048, 04F, 055
+          y         |   04B   | 024, 027, 02B, 02D, 039, 03B, 
+                    |         | 041
+          z         |   04C   | 026, 031, 034, 036, 044
          -----------------------------------------------------
 
 
